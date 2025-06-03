@@ -1,3 +1,3 @@
 export default function MainUI() {
-    return (<></>)
+    return (<div className="bg-black">dsddd</div>)
 }
