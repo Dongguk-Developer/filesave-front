@@ -6,7 +6,7 @@ export default function ShareUI({ files, setFiles }: ShareUIProps) {
     return (
     <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center h-full w-full text-center px-16 gap-3 py-8">
-            <div className="text-3xl font-bold">Upload Files</div>
+            <div className="text-3xl font-bold">Share Files</div>
             <div>Select files to upload and share with others</div>
             <div className="flex flex-row justify-center w-full py-2">
                 <div className="relative w-full">
@@ -15,11 +15,11 @@ export default function ShareUI({ files, setFiles }: ShareUIProps) {
                     {files&&files.length!=0?(
                             <div className="flex flex-row flex-wrap gap-4 justify-center">
                                 {Array.from(files).map((file) => (
-                                    <div key={file.name} className="w-16 h-16 border-2 border-black truncate rounded-xl flex flex-col">
+                                    <div key={file.name} className="w-16 h-16 border-2 border-black truncate rounded-xl flex flex-col p-2">
                                         <div className="w-fll flex flex-row justify-center">
                                             <img src="/src/assets/document.png" className="w-8"/>
                                         </div>
-                                        <div>{file.name}</div>
+                                        <div className="text-xs">{file.name}</div>
                                     </div>
                                 ))}
                             </div>
