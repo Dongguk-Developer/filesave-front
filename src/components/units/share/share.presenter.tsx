@@ -1,4 +1,8 @@
-export default function ShareUI() {
+interface ShareUIProps {
+  files: FileList | null;
+  setFiles: (files: FileList | null) => void;
+}
+export default function ShareUI({ files, setFiles }: ShareUIProps) {
     return (
     <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center h-full w-full text-center px-16 gap-3 py-8">
@@ -6,10 +10,24 @@ export default function ShareUI() {
             <div>Select files to upload and share with others</div>
             <div className="flex flex-row justify-center w-full py-2">
                 <div className="relative w-full">
-                    <input type="file" id="file" className="w-full h-full cursor-pointer absolute left-0 top-0 opacity-0" multiple></input>
-                    <div className="flex flex-col gap-1 border-dashed border-2 border-[#D1DBE8] w-full py-8 rounded-lg">
-                        <div className="font-bold text-lg">Drag and drop files here</div>
-                        <div>Or click to select files</div>
+                    <input type="file" onChange={(e)=>{setFiles(e.target.files)}} className="w-full h-full cursor-pointer absolute left-0 top-0 opacity-0" multiple></input>
+                    <div className="flex flex-col gap-1 border-dashed border-2 border-[#D1DBE8] w-full py-8 rounded-lg p-4">
+                    {files&&files.length!=0?(
+                            <div className="flex flex-row flex-wrap gap-4 justify-center">
+                                {Array.from(files).map((file) => (
+                                    <div key={file.name} className="w-16 h-16 border-2 border-black truncate rounded-xl flex flex-col">
+                                        <div className="w-fll flex flex-row justify-center">
+                                            <img src="/src/assets/document.png" className="w-8"/>
+                                        </div>
+                                        <div>{file.name}</div>
+                                    </div>
+                                ))}
+                            </div>
+                            ):(<>
+                                <div className="font-bold text-lg">Drag and drop files here</div>
+                                <div>Or click to select files</div>
+                                </>)
+                    }
                     </div>
                 </div>
             </div>
