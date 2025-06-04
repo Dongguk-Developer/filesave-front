@@ -5,7 +5,8 @@ export default function Access(){
     const navigate = useNavigate();
     const [code,setCode] = useState("");
     const tryAccess = ()=>{
-        navigate(`/files?code=${code}`)
+        if(code!="")
+            navigate(`/files?code=${code}`)
     }
     return (<AccessUI setCode={setCode} tryAccess={tryAccess}/>)
 }

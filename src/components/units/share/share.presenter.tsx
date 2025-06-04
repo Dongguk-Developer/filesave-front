@@ -68,7 +68,7 @@ export default function ShareUI({ files, setFiles, code, setCode, submit, getCod
                 </div>
             </div>
             <div className="flex flex-row justify-center w-full py-12">
-                <button className="rounded-xl p-4 w-full max-w-32 text-[#F7FAFC] font-bold bg-[#1A78E5]" onClick={()=>{submit();}}>Upload</button>
+                <button className={`rounded-xl p-4 w-full max-w-32 text-[#F7FAFC] font-bold ${code!==""&&files?"bg-[#1A78E5]":"bg-[#AAAAAA]"}`} onClick={()=>{submit();}}>Upload</button>
             </div>
         </div>
         {showAlert&&<AlertComponent showAlert={showAlert} setShowAlert={setShowAlert} classString={"rounded-lg bg-red-400 cursor-pointer p-3 text-white font-bold"} content={"파일의 최대 용량은 5MB입니다."}/>}

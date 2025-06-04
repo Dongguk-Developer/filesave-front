@@ -9,7 +9,8 @@ export default function Share(){
     const [code, setCode] = useState("");
     const [showAlert, setShowAlert] = useState(false);
     const submit = async () => {
-
+        if(code===""||!files)
+            return;
         const formData = new FormData();
         formData.append("code", code);
         if(files){

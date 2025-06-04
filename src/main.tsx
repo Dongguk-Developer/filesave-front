@@ -11,7 +11,7 @@ import Layout from './components/common/layout/Layout.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage/>} />

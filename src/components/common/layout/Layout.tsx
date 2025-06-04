@@ -12,7 +12,7 @@ export default function Layout() {
     };
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-[#F7FAFC] text-[#0D141C] p-4 flex flex-row justify-between border-b-2 border-[#D1DBE8]">
+      <header className="bg-[#F7FAFC] text-[#0D141C] p-4 flex flex-row justify-between border-b-2 border-[#D1DBE8] pt-2">
         <div className="flex flex-row gap-1 cursor-pointer" onClick={()=>{navigate('/')}}>
             <div className="h-full flex flex-col justify-center">
                 <div className="w-4 h-4 bg-black"></div>
