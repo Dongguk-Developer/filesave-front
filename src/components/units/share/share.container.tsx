@@ -7,11 +7,21 @@ export default function Share(){
     const navigate = useNavigate();
     const [files, setFiles] = useState<FileList | null>(null);
     const [code, setCode] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
     const submit = async () => {
+
         const formData = new FormData();
         formData.append("code", code);
         if(files){
             for (let i = 0; i < files.length; i++) {
+                const sizeInMB = files[i].size / (1024 * 1024);
+                
+                // 개당 5MB 제한
+                if(sizeInMB > 5) {
+                    setShowAlert(true)
+                    setTimeout(()=>{setShowAlert(false)},5000);
+                    return;
+                }
                 formData.append("files", files[i]);
             }
         }
@@ -32,5 +42,14 @@ export default function Share(){
             setCode(res.data.code)
         });
     };
-    return (<ShareUI files={files} setFiles={setFiles} code={code} setCode={setCode} submit={submit} getCode={getCode}/>)
+    return (<ShareUI
+        files={files}
+        setFiles={setFiles}
+        code={code}
+        setCode={setCode}
+        submit={submit}
+        getCode={getCode}
+        showAlert={showAlert}
+        setShowAlert={setShowAlert}
+    />)
 }
