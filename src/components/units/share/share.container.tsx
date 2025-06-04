@@ -29,7 +29,7 @@ export default function Share(){
 
 
         try {
-            const response = await axios.post("http://localhost:8081/file/upload", formData, {
+            const response = await axios.post("https://filesave.live/file/upload", formData, {
                 withCredentials: true,
             });
 
@@ -39,7 +39,7 @@ export default function Share(){
         }
     };
     const getCode = () => {
-        axios.get('http://localhost:8081/file/code').then((res)=>{
+        axios.get('https://filesave.live/file/code').then((res)=>{
             setCode(res.data.code)
         });
     };

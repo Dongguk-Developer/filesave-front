@@ -15,7 +15,7 @@ export default function Files(){
     const query = searchParams.get('code');
     useEffect(()=>{
         const loadFiles = async()=>{
-            const response = await axios.get(`http://localhost:8081/file/code/${query}`)
+            const response = await axios.get(`https://filesave.live:8081/file/code/${query}`)
             setFiles(response.data.files)
         }
         loadFiles();
