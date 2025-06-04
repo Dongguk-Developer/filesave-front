@@ -1,7 +1,7 @@
 import ShareUI from "./share.presenter";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "Axios";
+import axios from "axios";
 
 export default function Share(){
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Share(){
         }
     };
     const getCode = () => {
-        axios.get('https://filesave.live:8081/file/code').then((res)=>{
+        axios.get('https://filesave.live:8081/file/code').then((res: any)=>{
             setCode(res.data.code)
         });
     };

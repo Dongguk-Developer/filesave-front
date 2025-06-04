@@ -1,6 +1,6 @@
 import FilesUI from "./files.presenter";
 import { useSearchParams } from "react-router-dom";
-import axios from 'Axios';
+import axios from 'axios';
 import { useEffect, useState } from "react";
 interface FileItem {
   filename: string;
