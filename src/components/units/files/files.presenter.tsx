@@ -37,7 +37,7 @@ export default function FilesUI({ files, sortBy, setSortBy}: FilesUIProps) {
                                 }
                             })
                         .map((file, index) => {
-                            return (<tr key={index} className="hover:bg-slate-300 cursor-pointer" onClick={()=>{window.open(`https://filesave.live/file/download?filename=${file.filename.split("\\")[file.filename.split("\\").length-1]}&timestamp=${file.createdAt}`,"_blank")}}>
+                            return (<tr key={index} className="hover:bg-slate-300 cursor-pointer" onClick={()=>{window.open(`https://filesave.live:8081/file/download?filename=${file.filename.split("\\")[file.filename.split("\\").length-1]}&timestamp=${file.createdAt}`,"_blank")}}>
                                 <td className="text-left px-4 font-medium">{file.filename.split("\\")[file.filename.split("\\").length-1]}</td><td className="text-[#4F7096] font-medium">{file.filesize}byte</td><td className="text-[#4F7096] font-medium">{file.createdAt.split("T")[0]}</td></tr>)
                         }) : <></>}
                     </table>
