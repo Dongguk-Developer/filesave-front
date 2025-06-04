@@ -1,25 +1,36 @@
 import ShareUI from "./share.presenter";
 import { useState } from "react";
-import type { ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "Axios";
 
 export default function Share(){
+    const navigate = useNavigate();
     const [files, setFiles] = useState<FileList | null>(null);
-    // const [name, setName] = useState("");
+    const [code, setCode] = useState("");
+    const submit = async () => {
+        const formData = new FormData();
+        formData.append("code", code);
+        if(files){
+            for (let i = 0; i < files.length; i++) {
+                formData.append("files", files[i]);
+            }
+        }
 
-    // const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setName(e.target.value);
-    // };
 
-    // const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setEmail(e.target.value);
-    // };
-    
-    // const handleSubmit = (e: FormEvent<HTMLInputElement>) => {
-    //    e.preventDefault();
-    //    alert(`이름: ${name}\n이메일: ${email}`);
-    // };
-    
-    
+        try {
+            const response = await axios.post("http://localhost:8081/file/upload", formData, {
+                withCredentials: true,
+            });
 
-    return (<ShareUI files={files} setFiles={setFiles}/>)
+            navigate(`/files?code=${response.data.code}`)
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const getCode = () => {
+        axios.get('http://localhost:8081/file/code').then((res)=>{
+            setCode(res.data.code)
+        });
+    };
+    return (<ShareUI files={files} setFiles={setFiles} code={code} setCode={setCode} submit={submit} getCode={getCode}/>)
 }

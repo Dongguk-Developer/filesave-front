@@ -1,8 +1,12 @@
 interface ShareUIProps {
   files: FileList | null;
   setFiles: (files: FileList | null) => void;
+  code: string;
+  setCode: (code: string) => void;
+  submit: ()=>void;
+  getCode: ()=>void;
 }
-export default function ShareUI({ files, setFiles }: ShareUIProps) {
+export default function ShareUI({ files, setFiles, code, setCode, submit, getCode }: ShareUIProps) {
     return (
     <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center h-full w-full text-center px-16 gap-3 py-8">
@@ -38,13 +42,13 @@ export default function ShareUI({ files, setFiles }: ShareUIProps) {
                         Authorization Code
                     </div>
                     <div className="flex flex-row w-full gap-4 justify-center">
-                        <input placeholder="Enter Code" className="bg-[#E8EDF2] rounded-xl p-4 w-full max-w-64"></input>
-                        <button className="rounded-xl p-4 w-full max-w-64 text-[#F7FAFC] font-bold bg-[#1A78E5]">Get Random Auth Code</button>
+                        <input placeholder="Enter Code" className="bg-[#E8EDF2] rounded-xl p-4 w-full max-w-64" value={code ?? ''} onChange={(e)=>{setCode(e.target.value)}}></input>
+                        <button className="rounded-xl p-4 w-full max-w-64 text-[#F7FAFC] font-bold bg-[#1A78E5]" onClick={()=>{getCode()}}>Get Random Auth Code</button>
                     </div>
                 </div>
             </div>
             <div className="flex flex-row justify-center w-full py-12">
-                <button className="rounded-xl p-4 w-full max-w-32 text-[#F7FAFC] font-bold bg-[#1A78E5]">Upload</button>
+                <button className="rounded-xl p-4 w-full max-w-32 text-[#F7FAFC] font-bold bg-[#1A78E5]" onClick={()=>{submit();}}>Upload</button>
             </div>
         </div>
     </div>)
