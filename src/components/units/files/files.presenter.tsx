@@ -6,13 +6,10 @@ interface FileItem {
 
 interface FilesUIProps {
   files: Array<FileItem> | null;
-  setFiles: (files: Array<FileItem> | null) => void;
-  code: string;
-  setCode: (code: string) => void;
   sortBy: string;
   setSortBy: (sortBy: string) => void;
 }
-export default function FilesUI({ files, setFiles, code, setCode, sortBy, setSortBy}: FilesUIProps) {
+export default function FilesUI({ files, sortBy, setSortBy}: FilesUIProps) {
     return (
     <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center h-full w-full text-center px-32 gap-3 py-8">

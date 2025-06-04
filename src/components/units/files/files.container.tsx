@@ -11,7 +11,6 @@ interface FileItem {
 export default function Files(){
     const [searchParams] = useSearchParams();
     const [files, setFiles] = useState<FileItem[] | null>(null);
-    const [code, setCode] = useState<string | "">("");
     const [sortBy, setSortBy] = useState<string | "">("filename");
     const query = searchParams.get('code');
     useEffect(()=>{
@@ -21,5 +20,5 @@ export default function Files(){
         }
         loadFiles();
     },[query])
-    return (<FilesUI files={files} setFiles={setFiles} code={code} setCode={setCode} sortBy={sortBy} setSortBy={setSortBy}/>)
+    return (<FilesUI files={files} sortBy={sortBy} setSortBy={setSortBy}/>)
 }

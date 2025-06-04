@@ -1,9 +1,8 @@
 interface AccessUIProps {
-  code: string;
   setCode: (code: string) => void;
   tryAccess: () => void;
 }
-export default function AccessUI({ code, setCode, tryAccess}: AccessUIProps) {
+export default function AccessUI({ setCode, tryAccess}: AccessUIProps) {
     return (
     <div className="flex flex-row justify-center">
         <div className="flex flex-col justify-center h-full w-full text-center px-16 gap-3 py-8">
