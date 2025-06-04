@@ -20,7 +20,7 @@ export default function Layout() {
             <div className="font-black">FileDrop</div>    
         </div>
         <div className="flex flex-row gap-4">
-            <div className={getLinkClass("/access")} onClick={()=>{navigate('/access')}}>Access</div>
+            <div className={getLinkClass("/access")+" "+getLinkClass("/files")} onClick={()=>{navigate('/access')}}>Access</div>
             <div className={getLinkClass("/share")} onClick={()=>{navigate('/share')}}>Share</div>
             <div className={getLinkClass("/")} onClick={()=>{navigate('/')}}>Home</div>
         </div>
